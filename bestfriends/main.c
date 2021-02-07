@@ -7,8 +7,32 @@
 
 #include <stdio.h>
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    printf("Hello, World!\n");
+const int NMAX = 100000;
+
+int summiereEchteTeiler(int n){
+    int summe = 0;
+    for( int i=1; i<n; i++) {
+        if (n % i == 0) {
+            summe += i;
+        }
+    }
+    return summe;
+}
+
+int main() {
+    //
+    int SummeEchteTeiler = 0;
+    
+    printf("Befreundete Zahlen branch\n");
+    printf("%d\n", summiereEchteTeiler(284));
+    printf("%d\n", summiereEchteTeiler(220));
+
+    for( int i = 1; i < NMAX; i++) {
+        SummeEchteTeiler = summiereEchteTeiler(i);
+        if(( i == summiereEchteTeiler(SummeEchteTeiler)) && (i != SummeEchteTeiler)) {
+            printf( "%d, %d\n", i, SummeEchteTeiler);
+        }
+    }
+    printf("Done.\n");
     return 0;
 }
